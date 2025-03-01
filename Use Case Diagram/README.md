@@ -1,6 +1,6 @@
-USE CASE DIAGRAM
+# USE CASE DIAGRAM
 ![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/UseCase.png)
-#1. Sinh viên
+## 1. Sinh viên
 >Đăng ký vào ký túc xá
 
 >Nhận phòng
@@ -9,14 +9,14 @@ USE CASE DIAGRAM
 
 >Thanh toán hóa đơn điện nước
 
-#2. Bộ phận lễ tân
+## 2. Bộ phận lễ tân
 >Tiếp nhận đăng ký
 
 >Hướng dẫn sinh viên nhận phòng
 
 >Thu tiền điện, nước
 
-#3. Bộ phận quản lý sinh viên
+## 3. Bộ phận quản lý sinh viên
 >Xét duyệt hồ sơ sinh viên
 
 >Cấp thẻ lưu trú
@@ -25,7 +25,7 @@ USE CASE DIAGRAM
 
 >Kiểm tra đối chiếu thông tin
 
-#4. Bộ phận quản lý điện nước
+## 4. Bộ phận quản lý điện nước
 >Kiểm tra đồng hồ điện nước
 
 >Tính toán và thu tiền điện nước
