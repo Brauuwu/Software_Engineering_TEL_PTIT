@@ -1,0 +1,50 @@
+@startuml
+actor "Sinh viên" as SV
+actor "Bộ phận lễ tân" as LT
+actor "Bộ phận quản lý sinh viên" as QLSV
+actor "Bộ phận quản lý điện nước" as QLDN
+
+rectangle "Hệ thống Quản lý Ký túc xá" {
+    rectangle "Quản lý Sinh viên" {
+        QLSV -- (Xét duyệt hồ sơ sinh viên)
+        QLSV -- (Cấp thẻ lưu trú)
+        QLSV -- (Kiểm tra phòng và tài sản)
+        QLSV -- (Kiểm tra đối chiếu thông tin)
+        SV -- (Đăng ký vào ký túc xá)
+        SV -- (Nhận phòng)
+        SV -- (Trả phòng)
+        (Đăng ký vào ký túc xá) --> (Xét duyệt hồ sơ sinh viên)
+        (Xét duyệt hồ sơ sinh viên) --> (Cấp thẻ lưu trú)
+        (Nhận phòng) --> (Hướng dẫn sinh viên nhận phòng)
+        (Trả phòng) --> (Kiểm tra phòng và tài sản)
+        (Trả phòng) --> (Kiểm tra đối chiếu thông tin)
+    }
+    
+    rectangle "Quản lý Điện Nước" {
+        QLDN -- (Kiểm tra đồng hồ điện nước)
+        QLDN -- (Tính toán và thu tiền điện nước)
+        SV -- (Thanh toán hóa đơn điện nước)
+        (Thanh toán hóa đơn điện nước) --> (Thu tiền điện, nước)
+        (Thanh toán hóa đơn điện nước) --> (Kiểm tra đồng hồ điện nước)
+        (Thanh toán hóa đơn điện nước) --> (Tính toán và thu tiền điện nước)
+    }
+    
+    rectangle "Bộ phận Lễ tân" {
+        LT -- (Tiếp nhận đăng ký)
+        LT -- (Hướng dẫn sinh viên nhận phòng)
+        LT -- (Thu tiền điện, nước)
+    }
+
+
+    ' Relationships: Include, Extend, Generalization
+    (Đăng ký vào ký túc xá) .> (Xét duyệt hồ sơ sinh viên) : <<include>>
+    (Trả phòng) .> (Kiểm tra phòng và tài sản) : <<include>>
+    (Trả phòng) .> (Kiểm tra đối chiếu thông tin) : <<include>>
+
+    (Nhận phòng) .> (Hướng dẫn sinh viên nhận phòng) : <<extend>>
+    (Thanh toán hóa đơn điện nước) .> (Tính toán và thu tiền điện nước) : <<extend>>
+
+    (Thu tiền điện, nước) <|-- (Tính toán và thu tiền điện nước) : <<generalization>>
+    (Thu tiền điện, nước) <|-- (Kiểm tra đồng hồ điện nước) : <<generalization>>
+}
+@enduml
