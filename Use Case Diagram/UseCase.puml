@@ -1,4 +1,6 @@
 @startuml
+
+left to right direction
 actor "Sinh viên" as SV
 actor "Bộ phận lễ tân" as LT
 actor "Bộ phận quản lý sinh viên" as QLSV
@@ -6,45 +8,46 @@ actor "Bộ phận quản lý điện nước" as QLDN
 
 rectangle "Hệ thống Quản lý Ký túc xá" {
     rectangle "Quản lý Sinh viên" {
-        QLSV -- (Xét duyệt hồ sơ sinh viên)
-        QLSV -- (Cấp thẻ lưu trú)
-        QLSV -- (Kiểm tra phòng và tài sản)
-        QLSV -- (Kiểm tra đối chiếu thông tin)
-        SV -- (Đăng ký vào ký túc xá)
+        SV -- (Đăng ký vào KTX)
         SV -- (Nhận phòng)
         SV -- (Trả phòng)
-        (Đăng ký vào ký túc xá) --> (Xét duyệt hồ sơ sinh viên)
-        (Xét duyệt hồ sơ sinh viên) --> (Cấp thẻ lưu trú)
-        (Nhận phòng) --> (Hướng dẫn sinh viên nhận phòng)
-        (Trả phòng) --> (Kiểm tra phòng và tài sản)
-        (Trả phòng) --> (Kiểm tra đối chiếu thông tin)
-    }
-    
-    rectangle "Quản lý Điện Nước" {
-        QLDN -- (Kiểm tra đồng hồ điện nước)
-        QLDN -- (Tính toán và thu tiền điện nước)
-        SV -- (Thanh toán hóa đơn điện nước)
-        (Thanh toán hóa đơn điện nước) --> (Thu tiền điện, nước)
-        (Thanh toán hóa đơn điện nước) --> (Kiểm tra đồng hồ điện nước)
-        (Thanh toán hóa đơn điện nước) --> (Tính toán và thu tiền điện nước)
+        SV -- (Gia hạn phòng)
+        SV -- (Xóa thông tin sinh viên)
+        SV -- (Thanh toán điện nước)
+
+        (Đăng ký vào KTX) .> (Duyệt hồ sơ) : <<include>>
+        (Nhận phòng) .> (Hướng dẫn nhận phòng) : <<extend>>
+        (Nhận phòng) .> (Gia hạn phòng) : <<include>>
+        (Trả phòng) .> (Kiểm tra phòng và tài sản) : <<include>>
+        (Trả phòng) .> (Cấp thẻ lưu trú) : <<include>>
+        (Xóa thông tin sinh viên) .> (Lưu trữ thông tin sinh viên) : <<include>>
     }
     
     rectangle "Bộ phận Lễ tân" {
         LT -- (Tiếp nhận đăng ký)
-        LT -- (Hướng dẫn sinh viên nhận phòng)
-        LT -- (Thu tiền điện, nước)
+        LT -- (Hướng dẫn nhận phòng)
+        LT -- (Thu tiền phòng)
+        LT -- (Thu tiền điện nước)
     }
-
-
-    ' Relationships: Include, Extend, Generalization
-    (Đăng ký vào ký túc xá) .> (Xét duyệt hồ sơ sinh viên) : <<include>>
-    (Trả phòng) .> (Kiểm tra phòng và tài sản) : <<include>>
-    (Trả phòng) .> (Kiểm tra đối chiếu thông tin) : <<include>>
-
-    (Nhận phòng) .> (Hướng dẫn sinh viên nhận phòng) : <<extend>>
-    (Thanh toán hóa đơn điện nước) .> (Tính toán và thu tiền điện nước) : <<extend>>
-
-    (Thu tiền điện, nước) <|-- (Tính toán và thu tiền điện nước) : <<generalization>>
-    (Thu tiền điện, nước) <|-- (Kiểm tra đồng hồ điện nước) : <<generalization>>
+    
+    rectangle "Bộ phận Quản lý Sinh viên" {
+        QLSV -- (Duyệt hồ sơ)
+        QLSV -- (Lưu trữ thông tin sinh viên)
+        QLSV -- (Kiểm tra phòng và tài sản)
+        QLSV -- (Cấp thẻ lưu trú)
+    }
+    
+    rectangle "Bộ phận Quản lý Điện Nước" {
+        QLDN -- (Kiểm tra đồng hồ điện nước)
+        QLDN -- (Tính toán và thu tiền điện nước)
+    }
+    
+    ' Include relationships
+    (Thu tiền điện nước) .> (Kiểm tra đồng hồ điện nước) : <<include>>
+    (Thu tiền điện nước) .> (Tính toán và thu tiền điện nước) : <<include>>
+    
+    ' Generalization relationships
+    (Thu tiền phòng) <|-- (Gia hạn phòng) : <<generalization>>
 }
+
 @enduml
