@@ -27,7 +27,9 @@
 
 >Kiểm tra phòng và tài sản
 
->Kiểm tra đối chiếu thông tin
+>Lưu trữ thông tin sinh viên
+
+>Xóa thông tin sinh viên
 
 ## 4. Bộ phận quản lý điện nước
 >Kiểm tra đồng hồ điện nước
