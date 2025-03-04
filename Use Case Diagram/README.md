@@ -9,6 +9,8 @@
 
 >Thanh toán hóa đơn điện nước
 
+>Gia hạn phòng
+
 ## 2. Bộ phận lễ tân
 >Tiếp nhận đăng ký
 
