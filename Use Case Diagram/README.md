@@ -14,8 +14,6 @@
 ## 2. Bộ phận lễ tân
 >Tiếp nhận đăng ký
 
->Hướng dẫn sinh viên nhận phòng
-
 >Thu tiền điện nước
 
 >Thu tiền phòng
@@ -23,15 +21,11 @@
 ## 3. Bộ phận quản lý sinh viên
 >Xét duyệt hồ sơ sinh viên
 
->Cấp thẻ lưu trú
-
->Kiểm tra phòng và tài sản
-
 >Lưu trữ thông tin sinh viên
 
 >Xóa thông tin sinh viên
 
 ## 4. Bộ phận quản lý điện nước
->Kiểm tra đồng hồ điện nước
+>Cập nhật thông tin điện nước
 
 >Tính toán điện nước
