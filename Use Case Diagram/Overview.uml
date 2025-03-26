@@ -1,0 +1,63 @@
+@startuml
+actor Quản_trị_viên
+actor Nhân_viên_KTX
+actor Sinh_viên
+
+package "Hệ thống quản lý ký túc xá" {
+    usecase "Đăng nhập" as UC1
+
+    usecase "Thêm nhân viên" as UC2
+    usecase "Xóa nhân viên" as UC3
+    usecase "Sửa thông tin nhân viên" as UC4
+    usecase "Nghỉ làm việc" as UC5
+    usecase "Đăng kí làm việc" as UC6
+
+    usecase "Thêm sinh viên" as UC7
+    usecase "Xóa sinh viên" as UC8
+    usecase "Cập nhật thông tin sinh viên" as UC9
+
+    usecase "Đăng kí vào KTX" as UC10
+    usecase "Rời khỏi KTX" as UC11
+
+    usecase "Cập nhật hóa đơn" as UC12
+    usecase "Thanh toán hóa đơn" as UC13
+
+    usecase "Cập nhật số người ở" as UC14
+    usecase "Tra cứu thông tin phòng" as UC15
+
+    usecase "Xuất báo cáo" as UC16
+
+    UC3 ..> UC2 : <<include>>
+    UC4 ..> UC2 : <<include>>
+    UC5 ..> UC6 : <<include>>
+    
+    UC13 ..> UC12 : <<include>>
+    
+    UC14 ..> UC15 : <<extend>>
+    
+    UC7 ..> UC10 : <<include>>
+    UC8 ..> UC11 : <<include>>
+}
+
+Quản_trị_viên --> UC1
+Quản_trị_viên --> UC2
+Quản_trị_viên --> UC3
+Quản_trị_viên --> UC4
+Quản_trị_viên --> UC5
+Quản_trị_viên --> UC6
+
+Nhân_viên_KTX --> UC7
+Nhân_viên_KTX --> UC8
+Nhân_viên_KTX --> UC9
+Nhân_viên_KTX --> UC12
+Nhân_viên_KTX --> UC14
+Nhân_viên_KTX --> UC16
+
+Sinh_viên --> UC1
+Sinh_viên --> UC10
+Sinh_viên --> UC11
+Sinh_viên --> UC9
+Sinh_viên --> UC13
+Sinh_viên --> UC15
+
+@enduml
