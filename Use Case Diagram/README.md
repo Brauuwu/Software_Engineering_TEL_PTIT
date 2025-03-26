@@ -21,7 +21,7 @@ Hệ thống hướng tới đối tượng sử dụng gồm:
 ### 3. Chức năng quản lý phòng:
 * **Thông tin phòng:** Mã phòng, mô tả cơ sở vật chất có trong phòng (nóng lạnh, điều hòa, quạt, giường, bàn, tủ, …) số lượng phòng còn trống.
 * Thêm mới phòng trống, sửa phòng, cập nhật số người ở
-###4. Chức năng quản lý nhân viên:
+### 4. Chức năng quản lý nhân viên:
 * **Thông tin nhân viên:** Họ tên, giới tính, ngày tháng năm sinh, số điện thoại, quê quán, chức vụ, phòng ban.
 * Thêm, sửa, xóa thông tin nhân viên.
 ### 5. Chức năng quản lý hóa đơn:
