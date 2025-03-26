@@ -7,25 +7,25 @@ Hệ thống Quản lý Ký túc xá được thiết kế để giúp quản l�
 * Quản lý nhân viên (phân quyền, quản lý thông tin).
 * Quản lý hóa đơn (tạo, in, tra cứu hóa đơn tiền phòng).
 Hệ thống hướng tới đối tượng sử dụng gồm:
-* Sinh viên: Tra cứu phòng, xem hóa đơn.
-* Nhân viên quản lý KTX: Thao tác với dữ liệu sinh viên, phòng ở, hóa đơn.
-* Quản trị viên: Toàn quyền quản lý hệ thống, bao gồm cả nhân viên.
+* **Sinh viên:** Tra cứu phòng, xem hóa đơn.
+* **Nhân viên quản lý KTX:** Thao tác với dữ liệu sinh viên, phòng ở, hóa đơn.
+* **Quản trị viên:** Toàn quyền quản lý hệ thống, bao gồm cả nhân viên.
 
 ## II. Yêu cầu chức năng 
 ### 1. Chức năng đăng nhập
-* Thông tin đăng nhập: Tên đăng nhập, mật khẩu, email
+* **Thông tin đăng nhập:** Tên đăng nhập, mật khẩu, email
 * Người dùng quên mật khẩu sẽ được cấp lại qua email
 ### 2. Chức năng quản lý sinh viên:
-* Thông tin sinh viên: Mã sinh viên, họ tên, ngày tháng năm sinh, quê quán, niên khóa, số điện thoại, …
+* **Thông tin sinh viên:** Mã sinh viên, họ tên, ngày tháng năm sinh, quê quán, niên khóa, số điện thoại, …
 * Thêm thông tin khi có sinh viên mới, thay đổi thông tin sinh viên.
 ### 3. Chức năng quản lý phòng:
-* Thông tin phòng: Mã phòng, mô tả cơ sở vật chất có trong phòng (nóng lạnh, điều hòa, quạt, giường, bàn, tủ, …) số lượng phòng còn trống.
+* **Thông tin phòng:** Mã phòng, mô tả cơ sở vật chất có trong phòng (nóng lạnh, điều hòa, quạt, giường, bàn, tủ, …) số lượng phòng còn trống.
 * Thêm mới phòng trống, sửa phòng, cập nhật số người ở
 ###4. Chức năng quản lý nhân viên:
-* Thông tin nhân viên: Họ tên, giới tính, ngày tháng năm sinh, số điện thoại, quê quán, chức vụ, phòng ban.
+* **Thông tin nhân viên:** Họ tên, giới tính, ngày tháng năm sinh, số điện thoại, quê quán, chức vụ, phòng ban.
 * Thêm, sửa, xóa thông tin nhân viên.
 ### 5. Chức năng quản lý hóa đơn:
-* Thông tin hóa đơn: Loại hóa đơn, chủ sở hữu hóa đơn.
+* **Thông tin hóa đơn:** Loại hóa đơn, chủ sở hữu hóa đơn.
 * Tra cứu, thêm, xóa thông tin hóa đơn.
 
 ## III. Yêu cầu phi chức năng
