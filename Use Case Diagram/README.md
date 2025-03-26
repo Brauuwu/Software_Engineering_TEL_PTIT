@@ -1,5 +1,5 @@
 # Mô tả hệ thống quản lý KTX
-[alt-text] [https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Dorm.jpg]
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Dorm.jpg)
 ## I. Giới thiệu tổng quan
 Hệ thống Quản lý Ký túc xá được thiết kế để giúp quản lý hiệu quả thông tin sinh viên, phòng ở, nhân viên và hóa đơn thanh toán trong ký túc xá. Hệ thống cung cấp các chức năng cơ bản như:
 * Quản lý sinh viên (thêm, sửa, xóa, tra cứu).
