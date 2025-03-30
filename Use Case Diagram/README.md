@@ -1,6 +1,6 @@
 # Mô tả hệ thống quản lý KTX
-![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Dorm.jpg)
 ## I. Giới thiệu tổng quan
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Dorm.jpg)
 Hệ thống Quản lý Ký túc xá được thiết kế để giúp quản lý hiệu quả thông tin sinh viên, phòng ở, nhân viên và hóa đơn thanh toán trong ký túc xá. Hệ thống cung cấp các chức năng cơ bản như:
 * Quản lý sinh viên (thêm, sửa, xóa, tra cứu).
 * Quản lý phòng ở (đăng ký phòng, cập nhật cơ sở vật chất, kiểm tra phòng trống).
@@ -13,18 +13,23 @@ Hệ thống hướng tới đối tượng sử dụng gồm:
 
 ## II. Yêu cầu chức năng 
 ### 1. Chức năng đăng nhập
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Login.jpg)
 * **Thông tin đăng nhập:** Tên đăng nhập, mật khẩu, email
 * Người dùng quên mật khẩu sẽ được cấp lại qua email
 ### 2. Chức năng quản lý sinh viên:
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Student%20Management.jpg)
 * **Thông tin sinh viên:** Mã sinh viên, họ tên, ngày tháng năm sinh, quê quán, niên khóa, số điện thoại, …
 * Thêm thông tin khi có sinh viên mới, thay đổi thông tin sinh viên.
 ### 3. Chức năng quản lý phòng:
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Room%20Management.jpg)
 * **Thông tin phòng:** Mã phòng, mô tả cơ sở vật chất có trong phòng (nóng lạnh, điều hòa, quạt, giường, bàn, tủ, …) số lượng phòng còn trống.
 * Thêm mới phòng trống, sửa phòng, cập nhật số người ở
 ### 4. Chức năng quản lý nhân viên:
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Employee%20Management.jpg)
 * **Thông tin nhân viên:** Họ tên, giới tính, ngày tháng năm sinh, số điện thoại, quê quán, chức vụ, phòng ban.
 * Thêm, sửa, xóa thông tin nhân viên.
 ### 5. Chức năng quản lý hóa đơn:
+![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Use%20Case%20Diagram/Invoice%20Management.jpg)
 * **Thông tin hóa đơn:** Loại hóa đơn, chủ sở hữu hóa đơn.
 * Tra cứu, thêm, xóa thông tin hóa đơn.
 
