@@ -1,5 +1,5 @@
 # Hệ thống quản lý KTX
-![alt text](https://github.com/Brauuwu/Software_Engineering_TEL_PTIT/blob/main/Class%20Diagram/Class.jpg)
+![alt text]()
 ## Các Class chính:
 * Quản trị viên
 * Nhân viên KTX
