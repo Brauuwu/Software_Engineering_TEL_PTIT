@@ -853,6 +853,6 @@ def main():
             st.rerun()
         if st.button("Đăng xuất"):
             st.session_state.user = None
-            st.return()
+            st.rerun()
 if __name__ == "__main__":
     main()
