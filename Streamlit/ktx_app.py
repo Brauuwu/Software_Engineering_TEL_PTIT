@@ -9,7 +9,8 @@ def show_dashboard():
     col1, col2 = st.columns([1, 4])
     with col1:
         # Logo PTIT (thay bằng URL hình ảnh thực tế của bạn)
-        st.image("images/Logo_PTIT.png", width=120)
+        st.image("https://upload.wikimedia.org/wikipedia/vi/thumb/5/5f/Logo_PTIT_University.png/1200px-Logo_PTIT_University.png", 
+         width=120)
     with col2:
         st.title("HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ")
         st.markdown("**DỊCH VỤ SỐ DÀNH CHO SINH VIÊN LƯU TRÚ**")
@@ -217,7 +218,8 @@ def login_page():
     with st.container():
         col1, col2 = st.columns([1, 10], gap="medium")
         with col1:
-            st.image("images/Logo_PTIT.png", width=120, output_format="auto")
+            st.image("https://upload.wikimedia.org/wikipedia/vi/thumb/5/5f/Logo_PTIT_University.png/1200px-Logo_PTIT_University.png", 
+         width=120, output_format="auto")
         with col2:
             st.markdown("""
             <div class="login-container">
