@@ -75,7 +75,7 @@ def show_dashboard():
 
     # ----- Footer -----
     st.divider()
-    st.caption("© 2024 Học viện Công nghệ Bưu chính Viễn thông - Phát triển bởi Nhóm SV Khoa VT1")
+    st.caption("© 2025 Học viện Công nghệ Bưu chính Viễn thông - Phát triển bởi Nhóm SV Khoa VT1")
 
 
 # ----- Database Setup -----
@@ -300,7 +300,8 @@ def login_page():
             st.markdown("""
                 <div class="footer">
                     © 2025 Học viện Công nghệ Bưu chính Viễn thông<br>
-                    Phiên bản 1.0.0
+                    Phiên bản 1.0.0<br>
+                    -Made by Brauuwu-
                 </div>
             </div>
             """, unsafe_allow_html=True)
