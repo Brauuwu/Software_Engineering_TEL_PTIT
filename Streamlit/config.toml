@@ -1,2 +1,2 @@
-[server]
-enableStaticServing = true
+[db]
+path = "ktx.db"
