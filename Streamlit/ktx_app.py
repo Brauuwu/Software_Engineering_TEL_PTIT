@@ -214,99 +214,100 @@ def login_page():
         .login-container {
             max-width: 400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0.5rem;
             border-radius: 2px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background: white;
-            margin-top: 0.5vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            background-color: white;
         }
         .ptit-logo {
             display: block;
-            margin: 0 auto 1rem;
-            height: 60px;
+            margin: 0 auto 0rem;
+            height: 80px;
         }
         .login-title {
             text-align: center;
-            color: #0062cc;
+            color: #333;
+            font-size: 1.75rem;
             margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
         }
         .login-subtitle {
             text-align: center;
-            color: red;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
         .stTextInput>div>div>input {
-            padding: 10px;
-            border-radius: 4px;
+            border-radius: 2px;
+            padding: 4px;
+            border: 1px solid #ccc;
         }
         .stButton>button {
             width: 100%;
-            padding: 10px;
-            background: #0062cc;
+            padding: 12px;
             color: white;
+            background-color: #007bff;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 1rem;
             font-weight: bold;
+            cursor: pointer;
+        }
+        .stButton>button:hover {
+            background-color: #0056b3;
         }
         .forgot-link {
             text-align: right;
-            margin-top: -10px;
+            margin-top: -0.5rem;
             margin-bottom: 1rem;
         }
         .forgot-link a {
-            color: #0062cc;
-            font-size: 0.8rem;
+            color: #007bff;
             text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .forgot-link a:hover {
+            text-decoration: underline;
         }
         .footer {
             text-align: center;
             margin-top: 2rem;
-            color: #666;
-            font-size: 0.8rem;
+            color: #999;
+            font-size: 0.85rem;
         }
     </style>
     """, unsafe_allow_html=True)
 
     # Container chính
     with st.container():
-        col1, col2 = st.columns([1, 10], gap="medium")
-        with col1:
-            st.image("https://upload.wikimedia.org/wikipedia/commons/d/d7/Logo_PTIT.jpg"
-                 , width=120)
-        with col2:
-            st.markdown("""
-            <div class="login-container">
-                <div class="login-title">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ</div>
-                <div class="login-subtitle">DỊCH VỤ SỐ DÀNH CHO SINH VIÊN LƯU TRÚ</div>
-            """, unsafe_allow_html=True)
-            # Form đăng nhập
-            with st.form("login_form"):
-                username = st.text_input("Tên đăng nhập", placeholder="Username")
-                password = st.text_input("Mật khẩu", type="password", placeholder="Password")
+        st.markdown("""
+        <div class="login-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Logo_PTIT.jpg" alt="PTIT Logo" class="ptit-logo">
+            <h4 class="login-title">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ</h4>
+            <p class="login-subtitle">DỊCH VỤ SỐ DÀNH CHO SINH VIÊN LƯU TRÚ</p>
+        """, unsafe_allow_html=True)
+        with st.form("login_form"):
+            username = st.text_input("Tên đăng nhập", placeholder="Username", key='username')
+            password = st.text_input("Mật khẩu", type="password", placeholder="Password", key='password')
 
-                st.markdown('<div class="forgot-link"><a href="#">Quên mật khẩu?</a></div>', unsafe_allow_html=True)
+            st.markdown('<div class="forgot-link"><a href="#">Quên mật khẩu?</a></div>', unsafe_allow_html=True)
 
-                if st.form_submit_button("ĐĂNG NHẬP", use_container_width=True):
-                    user = authenticate(username, password)
-                    if user:
-                        st.session_state.user = user  # Lưu (username, role)
-                        st.rerun()
-                    else:
-                        st.error("Tài khoản hoặc mật khẩu không chính xác")
+            if st.form_submit_button("ĐĂNG NHẬP", use_container_width=True):
+                user = authenticate(username, password)
+                if user:
+                    st.session_state.user = user
+                    st.rerun()
+                else:
+                    st.error("Tài khoản hoặc mật khẩu không chính xác")
 
-            st.markdown("""
-                <div class="footer">
-                    © 2025 Học viện Công nghệ Bưu chính Viễn thông<br>
-                    Phiên bản 1.0.0<br>
-                    -Made by Brauuwu-
-                </div>
+        st.markdown("""
+            <div class="footer">
+                © 2025 Học viện Công nghệ Bưu chính Viễn thông<br>
+                Phiên bản 2.0.0<br>
+                --Made by Brauuwu--
             </div>
-            """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
 
-    # Ẩn các element không cần thiết
     hide_streamlit_style = """
         <style>
             #MainMenu {visibility: hidden;}
@@ -315,6 +316,7 @@ def login_page():
         </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 # ----- Student Management -----
 def student_management():
@@ -325,7 +327,7 @@ def student_management():
         st.warning("Bạn không có quyền truy cập chức năng này.")
         return
 
-    tab1, tab2, tab3, tab4 = st.tabs(["Thêm SV", "Cập nhật TT", "Danh sách SV", "Xóa SV"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Thêm SV", "Cập nhật TT", "Danh sách SV", "Xóa SV", "Chuyển phòng"])
 
     with tab1:
 
@@ -333,7 +335,7 @@ def student_management():
         if st.session_state.user[1] not in ['admin', 'staff']:
             st.warning("Bạn không có quyền thêm sinh viên.")
             return
-
+            
         with st.form("add_student"):
             st.subheader("Thêm sinh viên mới")
             student_id = st.text_input("Mã SV*")
@@ -358,11 +360,12 @@ def student_management():
                         conn.close()
 
     with tab2:
+
         # Kiểm tra quyền truy cập
         if st.session_state.user[1] not in ['admin', 'staff']:
-            st.warning("Bạn không có quyền cập nhật thông tin sinh viên.")
+            st.warning("Bạn không có quyền Cập nhật thông tin sinh viên.")
             return
-
+            
         conn = get_db_connection()
         students = conn.execute("SELECT student_id, full_name FROM students").fetchall()
         conn.close()
@@ -395,39 +398,45 @@ def student_management():
         conn.close()
         st.dataframe(df)
     with tab4:
+
+        # Kiểm tra quyền truy cập
+        if st.session_state.user[1] != 'admin':
+            st.warning("Bạn không có quyền xóa sinh viên.")
+            return
+            
         conn = get_db_connection()
         students = conn.execute("SELECT student_id, full_name, room_id FROM students").fetchall()
         conn.close()
-        
-        selected_student = st.selectbox("Chọn sinh viên cần xóa", 
+
+        selected_student = st.selectbox("Chọn sinh viên cần xóa",
                                       [f"{s[0]} - {s[1]}" for s in students],
                                       key="delete_student_select")
-        
+
         if selected_student and st.button("Xóa sinh viên", key="delete_student_btn"):
             student_id = selected_student.split(" - ")[0]
             try:
                 conn = get_db_connection()
-                
-                # Lấy thông tin sinh viên trước khi xóa
+
+                 # Lấy thông tin sinh viên trước khi xóa
                 student = conn.execute("SELECT room_id FROM students WHERE student_id=?", (student_id,)).fetchone()
                 room_id = student[0] if student else None
-                
+
                 # Kiểm tra xem sinh viên có hóa đơn chưa thanh toán không
-                unpaid_invoices = conn.execute("SELECT 1 FROM invoices WHERE student_id=? AND status='unpaid'", 
+                unpaid_invoices = conn.execute("SELECT 1 FROM invoices WHERE student_id=? AND status='unpaid'",
                                          (student_id,)).fetchone()
                 if unpaid_invoices:
                     st.warning("Không thể xóa vì sinh viên có hóa đơn chưa thanh toán!")
                 else:
                     # Xóa sinh viên
                     conn.execute("DELETE FROM students WHERE student_id=?", (student_id,))
-                    
+
                     # Nếu sinh viên có phòng, giảm số lượng người trong phòng
                     if room_id:
                         conn.execute("UPDATE rooms SET current_occupancy = MAX(0, current_occupancy - 1) WHERE room_id=?", (room_id,))
 
                         # Cập nhật trạng thái phòng nếu số người ở = 0
                         conn.execute("UPDATE rooms SET status = 'available' WHERE room_id=? AND current_occupancy = 0", (room_id,))
-                    
+
                     conn.commit()
                     st.success("Đã xóa sinh viên thành công!")
                     st.rerun()
@@ -435,6 +444,67 @@ def student_management():
                 st.error(f"Lỗi khi xóa: {str(e)}")
             finally:
                 conn.close()
+    with tab5:
+        student_shift_room()
+
+# ----- Chức năng chuyển phòng cho sinh viên -----
+def student_shift_room():
+    if st.session_state.user[1] != 'staff' and st.session_state.user[1] != 'admin':
+        st.warning("Bạn không có quyền truy cập chức năng này.")
+        return
+
+    st.header("Chuyển phòng cho sinh viên")
+
+    conn = get_db_connection()
+    students = conn.execute("SELECT student_id, full_name, room_id FROM students WHERE room_id IS NOT NULL").fetchall()
+    available_rooms = conn.execute("SELECT room_id FROM rooms WHERE status='available'").fetchall()
+    conn.close()
+
+    if not students:
+        st.info("Không có sinh viên nào đang ở phòng.")
+        return
+
+    if not available_rooms:
+        st.info("Không có phòng trống.")
+        return
+
+    selected_student = st.selectbox("Chọn sinh viên",
+                                  [f"{s[0]} - {s[1]} (Phòng: {s[2]})" for s in students])
+
+    if selected_student:
+        student_id = selected_student.split(" - ")[0]
+        current_room_id = selected_student.split("(Phòng: ")[1][:-1]
+
+        new_room_id = st.selectbox("Chọn phòng mới",
+                                    [r[0] for r in available_rooms])
+
+        if st.button("Xác nhận chuyển phòng"):
+            try:
+                conn = get_db_connection()
+
+                # 1. Cập nhật số lượng người ở phòng hiện tại
+                conn.execute("UPDATE rooms SET current_occupancy = MAX(0, current_occupancy - 1) WHERE room_id=?", (current_room_id,))
+                # Đặt trạng thái phòng thành 'available' nếu không còn ai ở
+                conn.execute("UPDATE rooms SET status = 'available' WHERE room_id=? AND current_occupancy = 0", (current_room_id,))
+
+                # 2. Cập nhật số lượng người ở phòng mới
+                conn.execute("UPDATE rooms SET current_occupancy = current_occupancy + 1 WHERE room_id=?", (new_room_id,))
+                # Đặt trạng thái phòng thành 'occupied' nếu phòng đã đầy
+                conn.execute("UPDATE rooms SET status = 'occupied' WHERE room_id=? AND current_occupancy >= capacity", (new_room_id,))
+
+                # 3. Cập nhật room_id cho sinh viên
+                conn.execute("UPDATE students SET room_id=? WHERE student_id=?", (new_room_id, student_id))
+
+                conn.commit()
+                st.success(f"Đã chuyển sinh viên {student_id} từ phòng {current_room_id} sang phòng {new_room_id}!")
+                st.rerun()
+
+            except Exception as e:
+                st.error(f"Lỗi khi chuyển phòng: {e}")
+
+            finally:
+                conn.close()
+
 
 # ----- Staff Management -----
 def staff_management():
@@ -450,7 +520,7 @@ def staff_management():
             staff_id = st.text_input("Mã nhân viên*")
             full_name = st.text_input("Họ tên*")
             position = st.selectbox("Chức vụ", ["Quản lý", "Nhân viên", "Bảo vệ"])
-            department = st.text_input("Phòng ban")
+            department = st.selectbox("Phòng ban", ["B1", "B2", "B5"])
 
             if st.form_submit_button("Lưu"):
                 if not staff_id or not full_name:
@@ -505,14 +575,8 @@ def staff_management():
 # ----- Room Management -----
 def room_management():
     st.header("🏠 Quản lý Phòng ở")
-
-    # Kiểm tra quyền truy cập
-    if st.session_state.user[1] not in ['admin', 'staff']:
-        st.warning("Bạn không có quyền truy cập chức năng này.")
-        return
-
-    tab1, tab2, tab3, tab4 = st.tabs(["Thêm phòng", "Đăng ký phòng", "DS phòng", "Xóa phòng"])
-
+    tab1, tab2, tab3 = st.tabs(["Thêm phòng", "DS phòng", "Xóa phòng"])
+    
     with tab1:
         with st.form("add_room"):
             st.subheader("Thêm phòng mới")
@@ -540,74 +604,38 @@ def room_management():
                         conn.close()
 
     with tab2:
-        # Kiểm tra quyền truy cập
-        if st.session_state.user[1] not in ['admin', 'staff']:
-            st.warning("Bạn không có quyền đăng ký phòng.")
-            return
-
-        st.subheader("Đăng ký phòng cho sinh viên")
         conn = get_db_connection()
-        available_rooms = conn.execute("SELECT room_id FROM rooms WHERE status='available'").fetchall()
-        students = conn.execute("SELECT student_id, full_name FROM students WHERE room_id IS NULL").fetchall()
+        rooms_df = pd.read_sql("SELECT * FROM rooms", conn)
+        conn.close()
+        st.dataframe(rooms_df)
+
+         # Hiển thị danh sách sinh viên trong mỗi phòng
+        st.subheader("Danh sách Sinh viên trong Phòng")
+        selected_room = st.selectbox("Chọn phòng", rooms_df['room_id'].unique())
+
+        conn = get_db_connection()
+        students_df = pd.read_sql(f"SELECT student_id, full_name FROM students WHERE room_id='{selected_room}'", conn)
         conn.close()
 
-        selected_room = st.selectbox("Chọn phòng trống",
-                                    [r[0] for r in available_rooms])
-        selected_student = st.selectbox("Chọn sinh viên",
-                                       [f"{s[0]} - {s[1]}" for s in students])
-
-        if st.button("Đăng ký"):
-            if not selected_room or not selected_student:
-                st.warning("Vui lòng chọn phòng và sinh viên!")
-            else:
-                student_id = selected_student.split(" - ")[0]
-                try:
-                    conn = get_db_connection()
-                    # Cập nhật room_id cho sinh viên
-                    conn.execute("UPDATE students SET room_id=? WHERE student_id=?",
-                                (selected_room, student_id))
-                    # Tăng số người ở hiện tại của phòng
-                    conn.execute("UPDATE rooms SET current_occupancy = current_occupancy + 1 WHERE room_id=?",
-                                (selected_room,))
-                    # Nếu phòng đầy, đổi trạng thái
-                    conn.execute("""
-                        UPDATE rooms
-                        SET status = 'occupied'
-                        WHERE room_id=? AND current_occupancy >= capacity
-                    """, (selected_room,))
-
-                    conn.commit()
-                    st.success(f"Đã đăng ký phòng {selected_room} cho sinh viên {student_id}!")
-                except Exception as e:
-                    st.error(f"Lỗi: {str(e)}")
-                finally:
-                    conn.close()
+        if not students_df.empty:
+            st.dataframe(students_df)
+        else:
+            st.write("Không có sinh viên nào trong phòng này.")
 
     with tab3:
         conn = get_db_connection()
-        df = pd.read_sql("SELECT * FROM rooms", conn)
-        conn.close()
-        st.dataframe(df)
-
-    with tab4:
-        # Kiểm tra quyền truy cập
-        if st.session_state.user[1] != 'admin':
-            st.warning("Bạn không có quyền xóa phòng.")
-            return
-
-        conn = get_db_connection()
         rooms = conn.execute("SELECT room_id FROM rooms").fetchall()
         conn.close()
-
-        selected_room = st.selectbox("Chọn phòng cần xóa",
+        
+        selected_room = st.selectbox("Chọn phòng cần xóa", 
                                     [r[0] for r in rooms],
                                     key="delete_room_select")
-
+        
         if selected_room and st.button("Xóa phòng", key="delete_room_btn"):
             try:
                 conn = get_db_connection()
                 # Kiểm tra xem phòng có sinh viên ở không
-                students_in_room = conn.execute("SELECT 1 FROM students WHERE room_id=?",
+                students_in_room = conn.execute("SELECT 1 FROM students WHERE room_id=?", 
                                                (selected_room,)).fetchone()
                 if students_in_room:
                     st.warning("Không thể xóa phòng đang có sinh viên ở!")
@@ -794,6 +822,157 @@ def report():
     
     conn.close()
 
+# ----- Student Update Information -----
+def student_update_info():
+    if st.session_state.user[1] != 'student':
+        st.warning("Chức năng này chỉ dành cho sinh viên.")
+        return
+
+    st.header("📝 Cập nhật thông tin cá nhân")
+    student_id = st.session_state.user[0]  # Tên người dùng là student_id
+
+    conn = get_db_connection()
+    student = conn.execute("SELECT * FROM students WHERE student_id=?", (student_id,)).fetchone()
+
+    if student:
+        with st.form("update_student_form"):
+            st.subheader("Thông tin hiện tại")
+            st.write(f"**Mã SV:** {student[0]}")
+            st.write(f"**Họ tên:** {student[1]}")
+            st.write(f"**Ngày sinh:** {student[2]}")
+
+            # Các trường có thể chỉnh sửa
+            new_phone = st.text_input("Số điện thoại mới", value=student[3])
+            new_class = st.text_input("Lớp mới", value=student[4])
+
+            if st.form_submit_button("Cập nhật"):
+                conn = get_db_connection()
+                conn.execute("UPDATE students SET phone=?, class=? WHERE student_id=?",
+                           (new_phone, new_class, student_id))
+                conn.commit()
+                conn.close()
+                st.success("Đã cập nhật thông tin thành công!")
+                st.rerun()
+
+# ----- Student Register Room -----
+def student_register_room():
+    if st.session_state.user[1] != 'student':
+        st.warning("Chức năng này chỉ dành cho sinh viên.")
+        return
+
+    st.header("🏠 Đăng ký phòng")
+    student_id = st.session_state.user[0]  # Tên người dùng là student_id
+
+    conn = get_db_connection()
+    #Lấy thông tin phòng có sẵn và thông tin phòng hiện tại của sinh viên
+    available_rooms = conn.execute("SELECT room_id FROM rooms WHERE status='available'").fetchall()
+    student = conn.execute("SELECT room_id FROM students WHERE student_id=?", (student_id,)).fetchone()
+    current_room_id = student[0] if student else None
+    conn.close()
+
+    #Nếu sinh viên đã có phòng, thông báo và thoát
+    if current_room_id:
+        st.info(f"Bạn đang ở trong phòng {current_room_id}. Vui lòng liên hệ quản trị viên để chuyển phòng.")
+        return
+
+    #Nếu không có phòng trống, thông báo và thoát
+    if not available_rooms:
+        st.info("Không có phòng trống.")
+        return
+
+    #Hiển thị selectbox cho sinh viên chọn phòng
+    selected_room = st.selectbox("Chọn phòng trống", [r[0] for r in available_rooms])
+
+     # Hiển thị danh sách sinh viên trong phòng đã chọn
+    conn = get_db_connection()
+    students_in_room = pd.read_sql(f"SELECT student_id, full_name FROM students WHERE room_id='{selected_room}'", conn)
+    conn.close()
+
+    if not students_in_room.empty:
+        st.subheader(f"Sinh viên trong phòng {selected_room}:")
+        st.dataframe(students_in_room)
+    else:
+        st.info("Phòng này hiện chưa có ai.")
+    
+    if st.button("Đăng ký"):
+        try:
+            conn = get_db_connection()
+            # Cập nhật room_id cho sinh viên
+            conn.execute("UPDATE students SET room_id=? WHERE student_id=?",
+                        (selected_room, student_id))
+            # Tăng số người ở hiện tại của phòng
+            conn.execute("UPDATE rooms SET current_occupancy = current_occupancy + 1 WHERE room_id=?",
+                        (selected_room,))
+            # Nếu phòng đầy, đổi trạng thái
+            conn.execute("""
+                UPDATE rooms
+                SET status = 'occupied'
+                WHERE room_id=? AND current_occupancy >= capacity
+            """, (selected_room,))
+            conn.commit()
+            st.success(f"Đã đăng ký phòng {selected_room} thành công!")
+        except Exception as e:
+            st.error(f"Lỗi: {str(e)}")
+        finally:
+            conn.close()
+        st.rerun()
+
+# ----- Staff Info -----
+def staff_info():
+    if st.session_state.user[1] != 'staff':
+        st.warning("Chức năng này chỉ dành cho nhân viên.")
+        return
+
+    st.header("ℹ️ Thông tin cá nhân")
+    staff_id = st.session_state.user[0]  # Tên người dùng là staff_id
+
+    conn = get_db_connection()
+    staff = conn.execute("SELECT * FROM staff WHERE staff_id=?", (staff_id,)).fetchone()
+    if staff:
+        st.subheader("Thông tin nhân viên")
+        st.write(f"**Mã NV:** {staff[0]}")
+        st.write(f"**Họ tên:** {staff[1]}")
+        st.write(f"**Chức vụ:** {staff[2]}")
+        st.write(f"**Phòng ban:** {staff[3]}")
+    else:
+        st.error("Không tìm thấy thông tin nhân viên.")
+    conn.close()
+
+# ----- Staff Update Information -----
+def staff_update_info():
+    if st.session_state.user[1] != 'staff':
+        st.warning("Chức năng này chỉ dành cho nhân viên.")
+        return
+
+    st.header("📝 Cập nhật thông tin cá nhân")
+    staff_id = st.session_state.user[0]  # Tên người dùng là staff_id
+
+    conn = get_db_connection()
+    staff = conn.execute("SELECT * FROM staff WHERE staff_id=?", (staff_id,)).fetchone()
+
+    if staff:
+        with st.form("update_staff_form"):
+            st.subheader("Thông tin hiện tại")
+            st.write(f"**Mã NV:** {staff[0]}")
+            st.write(f"**Họ tên:** {staff[1]}")
+            st.write(f"**Chức vụ:** {staff[2]}")
+            department_options = ["B1", "B2", "B5"]
+            new_department = st.selectbox("Phòng ban mới", department_options, 
+                                          index=department_options.index(staff[3]) if staff[3] in department_options else 0)
+
+            if st.form_submit_button("Cập nhật"):
+                try:
+                    conn = get_db_connection()
+                    conn.execute("UPDATE staff SET department=? WHERE staff_id=?",
+                               (new_department, staff_id))
+                    conn.commit()
+                    st.success("Đã cập nhật thông tin thành công!")
+                except Exception as e:
+                    st.error(f"Lỗi khi cập nhật: {str(e)}")
+                finally:
+                    conn.close()
+                st.rerun()
+
 # ----- Main App -----
 def main():
     st.set_page_config(layout="wide")
@@ -815,9 +994,11 @@ def main():
             st.subheader(f"Xin chào, {st.session_state.user[0]}!")
 
             # Tạo menu dựa trên vai trò
-            menu = ["Tổng quan"]
+            menu = ["Dashboard"]
             if st.session_state.user[1] == 'student':
-                menu.append("Thông tin cá nhân")
+                menu.extend(["Thông tin cá nhân", "Cập nhật thông tin", "Đăng ký phòng"])
+            if st.session_state.user[1] == 'staff':
+                menu.extend(["Thông tin nhân viên", "Thay đổi thông tin"])
             if st.session_state.user[1] in ['admin', 'staff']:
                 menu.extend(["Quản lý Sinh viên", "Quản lý Phòng", "Quản lý Hóa đơn", "Báo cáo"])
             if st.session_state.user[1] == 'admin':
@@ -828,7 +1009,7 @@ def main():
             choice = st.sidebar.selectbox("Menu", menu)
             st.button("Đăng xuất", on_click=lambda: st.session_state.update(user=None))
         # Điều hướng
-        if choice == "Tổng quan":
+        if choice == "Dashboard":
             # Rest of your code
             show_dashboard()
         elif choice == "Quản lý Sinh viên":
@@ -845,11 +1026,16 @@ def main():
             account_management()
         elif choice == "Thông tin cá nhân":
             student_info()
+        elif choice == "Cập nhật thông tin":
+            student_update_info()
+        elif choice == "Thông tin nhân viên":
+            staff_info()
+        elif choice == "Thay đổi thông tin":
+            staff_update_info()
+        elif choice == "Đăng ký phòng":
+            student_register_room()
         elif choice == "Đổi mật khẩu":
             st.warning("Chức năng đang phát triển")
-        elif choice == "Đăng xuất":
-            st.session_state.user = None
-            st.rerun()
 
 if __name__ == "__main__":
     main()
