@@ -2,7 +2,18 @@ import streamlit as st
 import sqlite3
 import hashlib
 import pandas as pd
+import base64
 from datetime import datetime
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
+
+logo_base64 = get_base64_image("Logo_PTIT.png")
+st.markdown(
+    f'<img src="data:image/png;base64,{logo_base64}" width="120">',
+    unsafe_allow_html=True
+)
 
 def show_dashboard():
     # ----- Phần header với logo PTIT -----
