@@ -2,19 +2,14 @@ import streamlit as st
 import sqlite3
 import hashlib
 import pandas as pd
-import base64
 from datetime import datetime
-
-def get_base64_image(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode('utf-8')
 
 def show_dashboard():
     # ----- Phần header với logo PTIT -----
     col1, col2 = st.columns([1, 4])
     with col1:
         # Logo PTIT (thay bằng URL hình ảnh thực tế của bạn)
-        st.image("https://www.google.com/url?sa=i&url=https%3A%2F%2Fdownloadlogomienphi.com%2Flogo%2Fdownload-logo-vector-hoc-vien-cong-nghe-buu-chinh-vien-thong-ptit-mien-phi&psig=AOvVaw0-7dXW-7Ou0xPEgU7csBQI&ust=1743920545834000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNC27LagwIwDFQAAAAAdAAAAABAE"
+        st.image("https://upload.wikimedia.org/wikipedia/commons/d/d7/Logo_PTIT.jpg"
                  , width=120)
     with col2:
         st.title("HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ")
@@ -223,7 +218,8 @@ def login_page():
     with st.container():
         col1, col2 = st.columns([1, 10], gap="medium")
         with col1:
-            st.image("images/Logo_PTIT.png", width=120, output_format="auto")
+            st.image("https://upload.wikimedia.org/wikipedia/commons/d/d7/Logo_PTIT.jpg"
+                 , width=120)
         with col2:
             st.markdown("""
             <div class="login-container">
