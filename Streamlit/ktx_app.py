@@ -823,10 +823,10 @@ def main():
             if st.session_state.user[1] == 'admin':
                 menu.extend(["Quản lý Nhân viên", "Quản lý tài khoản"])
 
-            menu.extend(["Đổi mật khẩu", "Đăng xuất"])
-
+            menu.extend(["Đổi mật khẩu"])
+            
             choice = st.sidebar.selectbox("Menu", menu)
-
+            st.button("Đăng xuất", on_click=lambda: st.session_state.update(user=None))
         # Điều hướng
         if choice == "Tổng quan":
             # Rest of your code
