@@ -10,10 +10,6 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode('utf-8')
 
 logo_base64 = get_base64_image("Logo_PTIT.png")
-st.markdown(
-    f'<img src="data:image/png;base64,{logo_base64}" width="120">',
-    unsafe_allow_html=True
-)
 
 def show_dashboard():
     # ----- Phần header với logo PTIT -----
