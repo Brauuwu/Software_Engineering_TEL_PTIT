@@ -851,6 +851,7 @@ def main():
         elif choice == "Đăng xuất":
             st.session_state.user = None
             st.rerun()
-
+        elif choice == "Đăng xuất":
+            st.return()
 if __name__ == "__main__":
     main()
