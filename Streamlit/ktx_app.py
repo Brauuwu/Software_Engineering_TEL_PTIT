@@ -9,8 +9,6 @@ def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode('utf-8')
 
-logo_base64 = get_base64_image("images/Logo_PTIT.png")
-
 def show_dashboard():
     # ----- Phần header với logo PTIT -----
     col1, col2 = st.columns([1, 4])
