@@ -16,7 +16,8 @@ def show_dashboard():
     col1, col2 = st.columns([1, 4])
     with col1:
         # Logo PTIT (thay bằng URL hình ảnh thực tế của bạn)
-        st.image("images/Logo_PTIT.png", width=120)
+        st.image("https://www.google.com/url?sa=i&url=https%3A%2F%2Fdownloadlogomienphi.com%2Flogo%2Fdownload-logo-vector-hoc-vien-cong-nghe-buu-chinh-vien-thong-ptit-mien-phi&psig=AOvVaw0-7dXW-7Ou0xPEgU7csBQI&ust=1743920545834000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNC27LagwIwDFQAAAAAdAAAAABAE"
+                 , width=120)
     with col2:
         st.title("HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ")
         st.markdown("**DỊCH VỤ SỐ DÀNH CHO SINH VIÊN LƯU TRÚ**")
