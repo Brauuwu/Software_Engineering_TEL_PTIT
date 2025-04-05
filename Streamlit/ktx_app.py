@@ -148,15 +148,7 @@ def authenticate(username, password):
     return result
 
 def get_db_connection():
-    # Xác định đường dẫn database tùy theo môi trường
-    if st.secrets.get("db_path"):  # Trên Streamlit Cloud
-        db_path = st.secrets["db_path"]
-    else:  # Local development
-        db_path = os.path.join(os.path.dirname(__file__), "ktx.db")
-    
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-    return conn
+    return sqlite3.connect('ktx.db')
 
 # ----- Authentication -----
 def login_page():
